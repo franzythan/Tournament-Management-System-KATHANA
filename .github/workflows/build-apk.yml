@@ -1,4 +1,4 @@
-name: Build KATHANA TMS v0.13 APK
+name: Build KATHANA TMS v0.14 APK
 
 on:
   workflow_dispatch:
@@ -23,10 +23,10 @@ jobs:
           gradle-version: '8.9'
           cache-disabled: true
 
-      - name: Extract KATHANA TMS v0.13
+      - name: Extract KATHANA TMS v0.14
         run: |
           mkdir -p android-project
-          unzip -q "KATHANA_TMS_v0_13_TEST_SOURCE.zip" -d android-project
+          unzip -q "KATHANA_TMS_v0_14_TEST_SOURCE.zip" -d android-project
 
       - name: Build APK
         working-directory: android-project
@@ -34,11 +34,11 @@ jobs:
 
       - name: Rename APK
         run: |
-          cp android-project/app/build/outputs/apk/debug/app-debug.apk KATHANA-TMS-v0.13.apk
+          cp android-project/app/build/outputs/apk/debug/app-debug.apk KATHANA-TMS-v0.14.apk
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: KATHANA-TMS-v0.13
-          path: KATHANA-TMS-v0.13.apk
+          name: KATHANA-TMS-v0.14
+          path: KATHANA-TMS-v0.14.apk
           retention-days: 30
