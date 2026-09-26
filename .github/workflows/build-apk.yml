@@ -23,10 +23,10 @@ jobs:
           gradle-version: '8.9'
           cache-disabled: true
 
-      - name: Extract v0.3 Android project
+      - name: Extract v0.4 Android project
         run: |
           mkdir -p android-project
-          unzip -q Tournament_Management_System_KATHANA_v0_3_TEST_SOURCE.zip -d android-project
+          unzip -q Tournament_Management_System_KATHANA_v0_4_TEST_SOURCE.zip -d android-project
 
       - name: Build APK
         working-directory: android-project
@@ -34,11 +34,11 @@ jobs:
 
       - name: Rename APK
         run: |
-          cp android-project/app/build/outputs/apk/debug/app-debug.apk Tournament-Management-System-KATHANA-v0.3.apk
+          cp android-project/app/build/outputs/apk/debug/app-debug.apk Tournament-Management-System-KATHANA-v0.4.apk
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: Tournament-Management-System-KATHANA-v0.3
-          path: Tournament-Management-System-KATHANA-v0.3.apk
+          name: Tournament-Management-System-KATHANA-v0.4
+          path: Tournament-Management-System-KATHANA-v0.4.apk
           retention-days: 30
