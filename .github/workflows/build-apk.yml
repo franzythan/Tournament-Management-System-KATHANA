@@ -26,7 +26,7 @@ jobs:
       - name: Extract KATHANA v0.8
         run: |
           mkdir -p android-project
-          unzip -q KATHANA_v08.zip -d android-project
+          unzip -q KATHANA_TMS_v0_8_TEST_SOURCE.zip -d android-project
 
       - name: Build APK
         working-directory: android-project
