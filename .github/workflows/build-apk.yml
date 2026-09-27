@@ -25,17 +25,17 @@ jobs:
         with:
           gradle-version: '8.9'
 
-      - name: Verify FINAL source ZIP
+      - name: Verify FINAL v0.18 source
         run: |
-          echo "21471eb065288f069beea8fa9634bc0c47f819f2d6a8d3dcd94e80517aa3f023  KATHANA_TMS_v0_18_FINAL_SOURCE.zip" | sha256sum -c -
+          echo "bd08e14d1f97dd5b481aa3bd07ff57acb0ac64d9cd48ba81ad35af59e8b30e30  KATHANA_TMS_v0_18_FINAL_VERIFIED_SOURCE.zip" | sha256sum -c -
 
       - name: Extract FINAL source
         run: |
           rm -rf android-project
           mkdir android-project
-          unzip -q KATHANA_TMS_v0_18_FINAL_SOURCE.zip -d android-project
+          unzip -q KATHANA_TMS_v0_18_FINAL_VERIFIED_SOURCE.zip -d android-project
 
-      - name: Build Debug APK
+      - name: Build APK
         working-directory: android-project
         run: gradle assembleDebug --stacktrace
 
