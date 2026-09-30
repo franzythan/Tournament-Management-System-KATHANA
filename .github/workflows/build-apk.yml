@@ -1,4 +1,4 @@
-name: Build KATHANA TMS v0.18 APK
+name: Build KATHANA TMS LB Label Fix APK
 
 on:
   workflow_dispatch:
@@ -25,15 +25,15 @@ jobs:
         with:
           gradle-version: '8.9'
 
-      - name: Verify FINAL v0.18 source
+      - name: Verify LB Round Label Correction source
         run: |
-          echo "bd08e14d1f97dd5b481aa3bd07ff57acb0ac64d9cd48ba81ad35af59e8b30e30  KATHANA_TMS_v0_18_FINAL_VERIFIED_SOURCE.zip" | sha256sum -c -
+          echo "e0bbe561116d812463e133cb28a1899d46508038f7efc8cbb579086ad5e0e215  KATHANA_TMS_v0_18_LB_ROUND_LABEL_CORRECTION_SOURCE.zip" | sha256sum -c -
 
-      - name: Extract FINAL source
+      - name: Extract corrected source
         run: |
           rm -rf android-project
           mkdir android-project
-          unzip -q KATHANA_TMS_v0_18_FINAL_VERIFIED_SOURCE.zip -d android-project
+          unzip -q KATHANA_TMS_v0_18_LB_ROUND_LABEL_CORRECTION_SOURCE.zip -d android-project
 
       - name: Build APK
         working-directory: android-project
@@ -41,11 +41,11 @@ jobs:
 
       - name: Prepare APK
         run: |
-          cp android-project/app/build/outputs/apk/debug/app-debug.apk KATHANA-TMS-v0.18.apk
+          cp android-project/app/build/outputs/apk/debug/app-debug.apk KATHANA-TMS-v0.18-LB-LABEL-FIX.apk
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: KATHANA-TMS-v0.18
-          path: KATHANA-TMS-v0.18.apk
+          name: KATHANA-TMS-v0.18-LB-LABEL-FIX
+          path: KATHANA-TMS-v0.18-LB-LABEL-FIX.apk
           if-no-files-found: error
